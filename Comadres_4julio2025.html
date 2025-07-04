@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lista Invitados COMADRES julio 2025</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      background: #d9d1dc;
+      color: #333;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+    }
+    details {
+      margin-top: 20px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    summary {
+      font-weight: bold;
+      font-size: 18px;
+      cursor: pointer;
+      color: #47005c;
+      outline: none;
+    }
+    .invitado {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+    }
+    .invitado input {
+      margin-right: 10px;
+    }
+    .boton {
+      margin-top: 15px;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      background-color: #ccc;
+      border: 2px outset #aaa;
+      color: #000;
+      cursor: pointer;
+      width: 100%;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h2>Lista Invitados - COMADRES 4 de julio 2025</h2>
+
+  <div style="text-align:center;">
+    <button class="boton" onclick="toggleGrupos()">⏬ Desplegar/Contraer todas las listas</button>
+  </div>
+
+  
+  <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
+    <input type="text" id="buscador" placeholder="🔍 Buscar invitado..." style="flex:1;" oninput="renderizar()" />
+    <select id="filtroGrupo" style="flex:1;" onchange="renderizar()">
+      <option value="">Todas las listas</option>
+    </select>
+  </div>
+
+  <div id="contenedorGrupos"></div>
+
+  <button class="boton" onclick="guardarAsistencia()">💾 Guardar control asistencia</button>
+  <button class="boton" onclick="descargarAsistencia()">⬇️ Descargar asistencia </button>
+
+  <details>
+    <summary> Añadir nuevo invitado</summary>
+    <div>
+      <input type="text" id="nombreNuevo" placeholder="Nombre del invitado" />
+      <select id="grupoNuevo">
+        <option value="">-- Selecciona una lista o crea una nueva --</option>
+      </select>
+      <input type="text" id="grupoPersonalizado" placeholder="Nueva lista (opcional)" />
+      <button class="boton" onclick="agregarInvitado()">Añadir invitado</button>
+    </div>
+  </details>
+
+  <script>
+    const datosIniciales = {
+  "Lista HORNELLA GÓNGORA": [
+    "Aaron gil llacer",
+    "Afioco +1",
+    "Alaba tena",
+    "Alberto Gonper",
+    "Alberto oporto",
+    "Alejandra García Fernández",
+    "Alejandra García Fernández",
+    "Ana Locking",
+    "Andrés Sánchez",
+    "Arif Alfaraz",
+    "Bimba Farelo y Teresa",
+    "Borja Richart",
+    "Cristina García",
+    "Daniel Cortez +4",
+    "David Prada",
+    "Enrique Gimeno",
+    "Ernesto López",
+    "Fran Sánchez",
+    "Gabriel Sanchez",
+    "Isaak Pony",
+    "Ivan Salmerón",
+    "Jorge olgoso",
+    "Jose fernandez",
+    "José Manuel Egea",
+    "Jota +1",
+    "Juan bueno",
+    "Juandiegoteo + 2",
+    "La niña del antro",
+    "Laura Villalba Alcaide",
+    "Laura Villalba Alcaide",
+    "Marc Fontanent",
+    "Max Ibarra",
+    "Nacho valles",
+    "Néstor Redó",
+    "Oliver Marcos +4",
+    "Patricia García",
+    "Paul",
+    "Pedro Xosé Martínez Gómez",
+    "Pedro Xosé Martínez Gómez",
+    "Pipo Fernández Gremoliche",
+    "Pipo Fernández Gremoliche",
+    "Raquel Sánchez",
+    "Ricky Carollo",
+    "Sara gascón",
+    "Sara Sanchez",
+    "Sergi Futurachicapop",
+    "Sergio Aguayo y Alberto",
+    "Tania Costado +1",
+    "Vedette Davis",
+    "Zaida del castillo"
+  ],
+  "Lista LACA UDILLA": [
+    "Andres Fernandez",
+    "Anto Collado",
+    "David Arias +1",
+    "⁠David Ferrer +2",
+    "Eva Harrington + 2",
+    "Jaime Nyst",
+    "⁠Javier Alfaro",
+    "Miguel Zaragoza",
+    "⁠Pedro Arnanz",
+    "Sadhu Ruiz+1",
+    "⁠Santiago Garcia",
+    "Vi Yu Ki"
+  ],
+  "Lista VENEDITA": [
+    "Miguel + 1",
+    "Mohamed + 1",
+    "Laura Bluetooth + 1",
+    "Nora Loot + 1",
+    "Daniel Celis + 1",
+    "Eugenio Muñiz + 1"
+  ]
+};
+    let asistenciaMarcada = JSON.parse(localStorage.getItem("asistenciaMarcada") || "[]");
+
+    function renderizar() {
+      const contenedor = document.getElementById("contenedorGrupos");
+      const selectorGrupo = document.getElementById("grupoNuevo");
+      contenedor.innerHTML = "";
+      selectorGrupo.innerHTML = '<option value="">-- Selecciona un grupo o escribe uno nuevo --</option>';
+
+      
+      const textoBusqueda = document.getElementById("buscador").value.toLowerCase();
+      const grupoFiltro = document.getElementById("filtroGrupo").value;
+      const grupos = Object.keys(datosIniciales).sort();
+
+      const filtroGrupoEl = document.getElementById("filtroGrupo");
+      filtroGrupoEl.innerHTML = '<option value="">Todos los grupos</option>';
+      grupos.forEach(g => filtroGrupoEl.innerHTML += `<option value="${g}">${g}</option>`);
+
+      for (const grupo of grupos) {
+        if (grupoFiltro && grupo !== grupoFiltro) continue;
+
+        const presentes = datosIniciales[grupo].filter(n => asistenciaMarcada.includes(n)).length;
+        const total = datosIniciales[grupo].length;
+
+        const details = document.createElement("details");
+        details.className = "grupo";
+        details.open = true;
+
+        const summary = document.createElement("summary");
+        summary.innerHTML = `<strong>${grupo}</strong> - 🧍‍♂️ ${presentes} / ${total}`;
+        details.appendChild(summary);
+
+        selectorGrupo.innerHTML += `<option value="${grupo}">${grupo}</option>`;
+
+        
+        datosIniciales[grupo].forEach(nombre => {
+          if (!nombre.toLowerCase().includes(textoBusqueda)) return;
+    
+          const divInvitado = document.createElement("div");
+          divInvitado.className = "invitado";
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.value = nombre;
+          checkbox.checked = asistenciaMarcada.includes(nombre);
+          checkbox.onchange = () => {
+            if (checkbox.checked) {
+              asistenciaMarcada.push(nombre);
+            } else {
+              asistenciaMarcada = asistenciaMarcada.filter(n => n !== nombre);
+            }
+            guardarAsistencia();
+            renderizar(); // Actualizar contador
+          };
+
+          const label = document.createElement("label");
+          label.textContent = nombre;
+
+          divInvitado.appendChild(checkbox);
+          divInvitado.appendChild(label);
+          details.appendChild(divInvitado);
+        });
+
+        contenedor.appendChild(details);
+      }
+    }
+
+    function guardarAsistencia() {
+      localStorage.setItem("asistenciaMarcada", JSON.stringify(asistenciaMarcada));
+          }
+
+    function descargarAsistencia() {
+      const texto = "Invitados presentes:\n\n" + asistenciaMarcada.join("\n");
+      const blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
+      const enlace = document.createElement("a");
+      enlace.href = URL.createObjectURL(blob);
+      enlace.download = "asistencia_comadres_2025.txt";
+      enlace.click();
+    }
+
+    function agregarInvitado() {
+      const nombre = document.getElementById("nombreNuevo").value.trim();
+      const grupoSeleccionado = document.getElementById("grupoNuevo").value;
+      const grupoPersonalizado = document.getElementById("grupoPersonalizado").value.trim();
+      const grupoFinal = grupoPersonalizado || grupoSeleccionado;
+
+      if (!nombre || !grupoFinal) {
+        alert("Por favor ingresa un nombre y un grupo válido.");
+        return;
+      }
+
+      if (!datosIniciales[grupoFinal]) {
+        datosIniciales[grupoFinal] = [];
+      }
+      datosIniciales[grupoFinal].push(nombre);
+      datosIniciales[grupoFinal].sort((a, b) => a.localeCompare(b));
+      document.getElementById("nombreNuevo").value = "";
+      document.getElementById("grupoNuevo").value = "";
+      document.getElementById("grupoPersonalizado").value = "";
+      renderizar();
+    }
+
+    function toggleGrupos() {
+      const all = document.querySelectorAll("details.grupo");
+      const algunoAbierto = Array.from(all).some(el => el.open);
+      all.forEach(el => el.open = !algunoAbierto);
+    }
+
+    window.onload = renderizar;
+  </script>
+</body>
+</html>
