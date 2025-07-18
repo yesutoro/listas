@@ -481,7 +481,7 @@
     datos.push({ nombre, total, dni, movil, entregadas, pendientes, notas });
   });
 
-  fetch('https://script.google.com/macros/library/d/1AbVBNZxk-CCt07gPhVqlQq_30UwzxP72tc3IPSHKO6a7wpSz5K-ZM5C0/1', {
+  fetch('https://script.google.com/macros/s/AKfycbyE2m3KC4hGZAGuZ0HhU1W3BpUjdivSd3QBvSSdvOpZV41ppY8EZx6T8B9HaWMF0ycg/exec', {
     method: 'POST',
     body: JSON.stringify(datos),
     headers: { 'Content-Type': 'application/json' }
