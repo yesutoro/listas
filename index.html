@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control Entradas - Rota BeachPride</title>
+  <style>
+    body { font-family: sans-serif; padding: 1rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: center; }
+    input[type="number"], input[type="text"] { width: 100%; box-sizing: border-box; }
+    tr.complete { background-color: #c6f6c4; color: #666; }
+    tfoot td { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Control de Entradas - Rota BeachPride</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Total entradas</th>
+        <th>DNI</th>
+        <th>Teléfono</th>
+        <th>Entradas entregadas</th>
+        <th>Entradas pendientes</th>
+        <th>Notas</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-registros">
+      <tr id="row-0">
+        <td>Ejemplo Nombre</td>
+        <td class="total">4</td>
+        <td>00000000A</td>
+        <td>600000000</td>
+        <td><input type="number" value="0" min="0" max="4" onchange="updateRow(0)" /></td>
+        <td class="pendientes">4</td>
+        <td><input type="text" /></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Totales</td>
+        <td id="total-total">4</td>
+        <td colspan="2"></td>
+        <td id="total-entregadas">0</td>
+        <td id="total-pendientes">4</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+  <button onclick="guardarDatos()">Guardar datos</button>
+  <span id="save-status" style="margin-left: 1rem; color: green;"></span>
+
+  <script>
+    function updateRow(index) {
+      const row = document.getElementById(`row-${index}`);
+      const total = parseInt(row.querySelector('.total').textContent);
+      const input = row.querySelector('input[type="number"]');
+      const entregadas = parseInt(input.value) || 0;
+      const pendientes = total - entregadas;
+      row.querySelector('.pendientes').textContent = pendientes;
+      if (entregadas >= total) {
+        row.classList.add('complete');
+      } else {
+        row.classList.remove('complete');
+      }
+      updateTotals();
+    }
+
+    function updateTotals() {
+      let totalEntradas = 0;
+      let totalEntregadas = 0;
+      document.querySelectorAll('#tabla-registros tr').forEach(row => {
+        const total = parseInt(row.querySelector('.total').textContent);
+        const entregadas = parseInt(row.querySelector('input[type="number"]').value) || 0;
+        totalEntradas += total;
+        totalEntregadas += entregadas;
+      });
+      document.getElementById('total-total').textContent = totalEntradas;
+      document.getElementById('total-entregadas').textContent = totalEntregadas;
+      document.getElementById('total-pendientes').textContent = totalEntradas - totalEntregadas;
+    }
+
+    function guardarDatos() {
+      const datos = [];
+      document.querySelectorAll('#tabla-registros tr').forEach((row, i) => {
+        const nombre = row.children[0].textContent;
+        const total = parseInt(row.querySelector('.total').textContent);
+        const dni = row.children[2].textContent;
+        const movil = row.children[3].textContent;
+        const entregadas = parseInt(row.querySelector('input[type="number"]').value) || 0;
+        const pendientes = total - entregadas;
+        const notas = row.querySelector('input[type="text"]').value || "";
+        datos.push({ nombre, total, dni, movil, entregadas, pendientes, notas });
+      });
+
+      fetch('https://script.google.com/macros/s/AKfycbwqzXKfxD1J65ujDSdRIca_sP2eplRJi5ukiHmczp_j17KJH36Wkj9H_ghLK6PPRioWPg/exec', {
+        method: 'POST',
+        body: JSON.stringify(datos),
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(res => res.text())
+      .then(txt => {
+        document.getElementById('save-status').textContent = "Datos enviados a Google Sheets";
+        setTimeout(() => document.getElementById('save-status').textContent = "", 3000);
+      })
+      .catch(err => {
+        document.getElementById('save-status').textContent = "Error al guardar: " + err.message;
+      });
+    }
+
+    window.onload = updateTotals;
+  </script>
+</body>
+</html>
