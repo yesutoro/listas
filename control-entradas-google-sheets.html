@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control Entradas - Rota BeachPride</title>
+  <style>
+    body { font-family: sans-serif; padding: 1rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: center; }
+    input[type="number"], input[type="text"] { width: 100%; box-sizing: border-box; }
+    tr.complete { background-color: #c6f6c4; color: #666; }
+    tfoot td { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Control de Entradas - Rota BeachPride</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Total entradas</th>
+        <th>DNI</th>
+        <th>Teléfono</th>
+        <th>Entradas entregadas</th>
+        <th>Entradas pendientes</th>
+        <th>Notas</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-registros">
+
+      <tr id="row-0">
+        <td>ALBERTO HONRRUBIA </td>
+        <td class="total">8</td>
+        <td>47084217C</td>
+        <td>665 81 45 37</td>
+        <td><input type="number" value="0" min="0" max="8" onchange="updateRow(0)" /></td>
+        <td class="pendientes">8</td>
+        <td><input type="text" onchange="updateNota(0)" /></td>
+      </tr>
+    
+      <tr id="row-1">
+        <td>ALICIA MOYA </td>
+        <td class="total">2</td>
+        <td>53583832L</td>
+        <td>652 06 97 74</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(1)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(1)" /></td>
+      </tr>
+    
+      <tr id="row-2">
+        <td>ALVARO MARTINEZ FUENTES</td>
+        <td class="total">2</td>
+        <td>52317534D</td>
+        <td>675 81 25 47</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(2)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(2)" /></td>
+      </tr>
+    
+      <tr id="row-3">
+        <td>ANA MAURER</td>
+        <td class="total">3</td>
+        <td>32072683B</td>
+        <td>637 09 10 97</td>
+        <td><input type="number" value="0" min="0" max="3" onchange="updateRow(3)" /></td>
+        <td class="pendientes">3</td>
+        <td><input type="text" onchange="updateNota(3)" /></td>
+      </tr>
+    
+      <tr id="row-4">
+        <td>ANDRE CHRISTIAN</td>
+        <td class="total">7</td>
+        <td>sin DNI</td>
+        <td>642 74 07 75</td>
+        <td><input type="number" value="0" min="0" max="7" onchange="updateRow(4)" /></td>
+        <td class="pendientes">7</td>
+        <td><input type="text" onchange="updateNota(4)" /></td>
+      </tr>
+    
+      <tr id="row-5">
+        <td>ANGEL MANUEL GONZALEZ</td>
+        <td class="total">1</td>
+        <td>53582700Z </td>
+        <td>672 64 75 69</td>
+        <td><input type="number" value="0" min="0" max="1" onchange="updateRow(5)" /></td>
+        <td class="pendientes">1</td>
+        <td><input type="text" onchange="updateNota(5)" /></td>
+      </tr>
+    
+      <tr id="row-6">
+        <td>CARMEN PEREZ SOTO</td>
+        <td class="total">7</td>
+        <td>31675553E</td>
+        <td>678 67 96 53</td>
+        <td><input type="number" value="0" min="0" max="7" onchange="updateRow(6)" /></td>
+        <td class="pendientes">7</td>
+        <td><input type="text" onchange="updateNota(6)" /></td>
+      </tr>
+    
+      <tr id="row-7">
+        <td>CHAD JIMISON</td>
+        <td class="total">2</td>
+        <td>Z2345464K</td>
+        <td>686 02 27 57</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(7)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(7)" /></td>
+      </tr>
+    
+      <tr id="row-8">
+        <td>DAVID SANCHEZ</td>
+        <td class="total">4</td>
+        <td>53580301F</td>
+        <td>617 76 54 08</td>
+        <td><input type="number" value="0" min="0" max="4" onchange="updateRow(8)" /></td>
+        <td class="pendientes">4</td>
+        <td><input type="text" onchange="updateNota(8)" /></td>
+      </tr>
+    
+      <tr id="row-9">
+        <td>ELISABETH CERVANTES</td>
+        <td class="total">2</td>
+        <td>53584521H</td>
+        <td>697 71 17 45</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(9)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(9)" /></td>
+      </tr>
+    
+      <tr id="row-10">
+        <td>FELIPE SINTH FLORIDO </td>
+        <td class="total">1</td>
+        <td>11165475X</td>
+        <td>sin movil</td>
+        <td><input type="number" value="0" min="0" max="1" onchange="updateRow(10)" /></td>
+        <td class="pendientes">1</td>
+        <td><input type="text" onchange="updateNota(10)" /></td>
+      </tr>
+    
+      <tr id="row-11">
+        <td>GIOVANNA DIFRANCO</td>
+        <td class="total">5</td>
+        <td>3190483</td>
+        <td>sin movil</td>
+        <td><input type="number" value="0" min="0" max="5" onchange="updateRow(11)" /></td>
+        <td class="pendientes">5</td>
+        <td><input type="text" onchange="updateNota(11)" /></td>
+      </tr>
+    
+      <tr id="row-12">
+        <td>GUSTAVO SANCHEZ ABASCAL</td>
+        <td class="total">1</td>
+        <td>27324444F</td>
+        <td>653 43 34 44</td>
+        <td><input type="number" value="0" min="0" max="1" onchange="updateRow(12)" /></td>
+        <td class="pendientes">1</td>
+        <td><input type="text" onchange="updateNota(12)" /></td>
+      </tr>
+    
+      <tr id="row-13">
+        <td>INMA PEÑA </td>
+        <td class="total">1</td>
+        <td>52314228S</td>
+        <td>672 50 92 41</td>
+        <td><input type="number" value="0" min="0" max="1" onchange="updateRow(13)" /></td>
+        <td class="pendientes">1</td>
+        <td><input type="text" onchange="updateNota(13)" /></td>
+      </tr>
+    
+      <tr id="row-14">
+        <td>ISMAEL MORALES</td>
+        <td class="total">2</td>
+        <td>48878792C</td>
+        <td>619 43 60 13</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(14)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(14)" /></td>
+      </tr>
+    
+      <tr id="row-15">
+        <td>JASON DOLLY</td>
+        <td class="total">2</td>
+        <td>FA368834</td>
+        <td>658 88 51 31</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(15)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(15)" /></td>
+      </tr>
+    
+      <tr id="row-16">
+        <td>JAVI RUIZ HENESTROSA</td>
+        <td class="total">2</td>
+        <td>78608411T</td>
+        <td>625 04 26 09</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(16)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(16)" /></td>
+      </tr>
+    
+      <tr id="row-17">
+        <td>JENI SANCHEZ</td>
+        <td class="total">2</td>
+        <td>52317823E</td>
+        <td>653 27 29 62</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(17)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(17)" /></td>
+      </tr>
+    
+      <tr id="row-18">
+        <td>JESUS CONSUEGRA</td>
+        <td class="total">2</td>
+        <td>47337786Z</td>
+        <td>692 10 39 72</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(18)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(18)" /></td>
+      </tr>
+    
+      <tr id="row-19">
+        <td>JESUS CORBETO</td>
+        <td class="total">2</td>
+        <td>52315367G</td>
+        <td>606 58 21 09</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(19)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(19)" /></td>
+      </tr>
+    
+      <tr id="row-20">
+        <td>JOSE LUIS MUÑOZ CRUZ</td>
+        <td class="total">3</td>
+        <td>31724610C</td>
+        <td>667 48 32 21</td>
+        <td><input type="number" value="0" min="0" max="3" onchange="updateRow(20)" /></td>
+        <td class="pendientes">3</td>
+        <td><input type="text" onchange="updateNota(20)" /></td>
+      </tr>
+    
+      <tr id="row-21">
+        <td>KEVIN MEDINA ESQUIVEL</td>
+        <td class="total">1</td>
+        <td>53582592K</td>
+        <td>353870529698</td>
+        <td><input type="number" value="0" min="0" max="1" onchange="updateRow(21)" /></td>
+        <td class="pendientes">1</td>
+        <td><input type="text" onchange="updateNota(21)" /></td>
+      </tr>
+    
+      <tr id="row-22">
+        <td>LAURA JASSO</td>
+        <td class="total">2</td>
+        <td>Z0742525-K</td>
+        <td>687 04 45 41</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(22)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(22)" /></td>
+      </tr>
+    
+      <tr id="row-23">
+        <td>LORENA MORENO RANGEL</td>
+        <td class="total">1</td>
+        <td>53584636H</td>
+        <td>657 35 66 07</td>
+        <td><input type="number" value="0" min="0" max="1" onchange="updateRow(23)" /></td>
+        <td class="pendientes">1</td>
+        <td><input type="text" onchange="updateNota(23)" /></td>
+      </tr>
+    
+      <tr id="row-24">
+        <td>LUIS MIGUEL HERRERA CARMONA</td>
+        <td class="total">1</td>
+        <td>28498335R</td>
+        <td>672 05 21 51</td>
+        <td><input type="number" value="0" min="0" max="1" onchange="updateRow(24)" /></td>
+        <td class="pendientes">1</td>
+        <td><input type="text" onchange="updateNota(24)" /></td>
+      </tr>
+    
+      <tr id="row-25">
+        <td>MARIA SANCHEZ FREIRE + SERGIO </td>
+        <td class="total">2</td>
+        <td>52563620h</td>
+        <td>636 20 22 60</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(25)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(25)" /></td>
+      </tr>
+    
+      <tr id="row-26">
+        <td>MAURO MUÑOZ </td>
+        <td class="total">3</td>
+        <td>53581082Y</td>
+        <td>673 20 65 34</td>
+        <td><input type="number" value="0" min="0" max="3" onchange="updateRow(26)" /></td>
+        <td class="pendientes">3</td>
+        <td><input type="text" onchange="updateNota(26)" /></td>
+      </tr>
+    
+      <tr id="row-27">
+        <td>MIGUEL ANGEL ALBA SANCHEZ</td>
+        <td class="total">2</td>
+        <td>74904202X</td>
+        <td>639 18 13 52</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(27)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(27)" /></td>
+      </tr>
+    
+      <tr id="row-28">
+        <td>MIGUEL ANGEL URQUIZA + JOSE R </td>
+        <td class="total">2</td>
+        <td>X4904774R</td>
+        <td>600 88 64 60</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(28)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(28)" /></td>
+      </tr>
+    
+      <tr id="row-29">
+        <td>NATALIA BRAVO</td>
+        <td class="total">15</td>
+        <td>52317694P</td>
+        <td>613 37 96 29</td>
+        <td><input type="number" value="0" min="0" max="15" onchange="updateRow(29)" /></td>
+        <td class="pendientes">15</td>
+        <td><input type="text" onchange="updateNota(29)" /></td>
+      </tr>
+    
+      <tr id="row-30">
+        <td>NAZARET LOBATO RAMOS</td>
+        <td class="total">1</td>
+        <td>53587477 F</td>
+        <td>625 25 29 19</td>
+        <td><input type="number" value="0" min="0" max="1" onchange="updateRow(30)" /></td>
+        <td class="pendientes">1</td>
+        <td><input type="text" onchange="updateNota(30)" /></td>
+      </tr>
+    
+      <tr id="row-31">
+        <td>NOELIA SALAS </td>
+        <td class="total">2</td>
+        <td>52318485V</td>
+        <td>647 88 82 63</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(31)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(31)" /></td>
+      </tr>
+    
+      <tr id="row-32">
+        <td>PATRICIA MONTES HERRERA</td>
+        <td class="total">1</td>
+        <td>523119979Q</td>
+        <td>657 90 84 31</td>
+        <td><input type="number" value="0" min="0" max="1" onchange="updateRow(32)" /></td>
+        <td class="pendientes">1</td>
+        <td><input type="text" onchange="updateNota(32)" /></td>
+      </tr>
+    
+      <tr id="row-33">
+        <td>PELAYO  LONDRES</td>
+        <td class="total">2</td>
+        <td>94291214</td>
+        <td>623 41 57 33</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(33)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(33)" /></td>
+      </tr>
+    
+      <tr id="row-34">
+        <td>PILAR NIÑO  </td>
+        <td class="total">6</td>
+        <td>53582951N</td>
+        <td>637 42 94 83</td>
+        <td><input type="number" value="0" min="0" max="6" onchange="updateRow(34)" /></td>
+        <td class="pendientes">6</td>
+        <td><input type="text" onchange="updateNota(34)" /></td>
+      </tr>
+    
+      <tr id="row-35">
+        <td>SARA MATEO BARBA</td>
+        <td class="total">2</td>
+        <td>53584273T</td>
+        <td>686 69 12 81</td>
+        <td><input type="number" value="0" min="0" max="2" onchange="updateRow(35)" /></td>
+        <td class="pendientes">2</td>
+        <td><input type="text" onchange="updateNota(35)" /></td>
+      </tr>
+    
+      <tr id="row-36">
+        <td>SERGIO RODRIGUEZ MUÑOZ </td>
+        <td class="total">1</td>
+        <td>45738244F</td>
+        <td>660 12 83 45</td>
+        <td><input type="number" value="0" min="0" max="1" onchange="updateRow(36)" /></td>
+        <td class="pendientes">1</td>
+        <td><input type="text" onchange="updateNota(36)" /></td>
+      </tr>
+    
+      <tr id="row-37">
+        <td>VICTOR DEL VALLE</td>
+        <td class="total">1</td>
+        <td>38561992P</td>
+        <td>661 71 33 67</td>
+        <td><input type="number" value="0" min="0" max="1" onchange="updateRow(37)" /></td>
+        <td class="pendientes">1</td>
+        <td><input type="text" onchange="updateNota(37)" /></td>
+      </tr>
+    
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Totales</td>
+        <td id="total-total">0</td>
+        <td colspan="2"></td>
+        <td id="total-entregadas">0</td>
+        <td id="total-pendientes">0</td>
+        <td></td>
+      </tr>
+    
+</tfoot>
+  </table>
+  <div style="margin-top:1rem;">
+    <button onclick="guardarDatos()" style="padding: 0.5rem 1rem; font-size: 1rem;">Guardar datos</button>
+    <span id="save-status" style="margin-left: 1rem; color: green;"></span>
+  </div>
+
+
+  <script>
+    function updateRow(index) {
+      const row = document.getElementById(`row-${index}`);
+      const total = parseInt(row.querySelector('.total').textContent);
+      const input = row.querySelector('input[type="number"]');
+      const entregadas = parseInt(input.value) || 0;
+      const pendientes = total - entregadas;
+      row.querySelector('.pendientes').textContent = pendientes;
+
+      if (entregadas >= total) {
+        row.classList.add('complete');
+      } else {
+        row.classList.remove('complete');
+      }
+      updateTotals();
+    }
+
+    function updateNota(index) {
+      // opcional: procesar notas
+    }
+
+    function updateTotals() {
+      let totalEntradas = 0;
+      let totalEntregadas = 0;
+
+      document.querySelectorAll('#tabla-registros tr').forEach(row => {
+        const total = parseInt(row.querySelector('.total').textContent);
+        const entregadas = parseInt(row.querySelector('input[type="number"]').value) || 0;
+
+        totalEntradas += total;
+        totalEntregadas += entregadas;
+      });
+
+      document.getElementById('total-total').textContent = totalEntradas;
+      document.getElementById('total-entregadas').textContent = totalEntregadas;
+      document.getElementById('total-pendientes').textContent = totalEntradas - totalEntregadas;
+    }
+
+    
+    function guardarDatos() {
+  const datos = [];
+  document.querySelectorAll('#tabla-registros tr').forEach((row, i) => {
+    const nombre = row.children[0].textContent;
+    const total = parseInt(row.querySelector('.total').textContent);
+    const dni = row.children[2].textContent;
+    const movil = row.children[3].textContent;
+    const entregadas = parseInt(row.querySelector('input[type="number"]').value) || 0;
+    const pendientes = total - entregadas;
+    const notas = row.querySelector('input[type="text"]').value || "";
+    datos.push({ nombre, total, dni, movil, entregadas, pendientes, notas });
+  });
+
+  fetch('https://script.google.com/macros/library/d/1AbVBNZxk-CCt07gPhVqlQq_30UwzxP72tc3IPSHKO6a7wpSz5K-ZM5C0/1', {
+    method: 'POST',
+    body: JSON.stringify(datos),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(res => res.text())
+  .then(txt => {
+    document.getElementById('save-status').textContent = "Datos enviados a Google Sheets";
+    setTimeout(() => document.getElementById('save-status').textContent = "", 3000);
+  });
+}
+
+    window.onload = updateTotals;
+
+  </script>
+</body>
+</html>
