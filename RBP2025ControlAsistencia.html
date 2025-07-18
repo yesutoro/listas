@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Asistencia - RotaBeachPride2025</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow-x: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #d63384;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f9f9f9;
+    }
+    input[type="text"], input[type="checkbox"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 5px;
+    }
+    input.max2 {
+      width: 40px;
+      text-align: center;
+    }
+    .btn-save, .btn-export {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-save:hover, .btn-export:hover {
+      background-color: #c2186b;
+    }
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Control de Asistencia - RotaBeachPride2025</h1>
+    <form id="asistenciaForm">
+      <table id="asistenciaTable">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>DNI</th>
+            <th>Móvil</th>
+            <th>Nº</th>
+            <th>Pendientes</th>
+            <th>Entregada</th>
+            <th>Observaciones</th>
+          </tr>
+        </thead>
+        <tbody><tr><td>	ALBERTO HONRRUBIA 	</td><td>	47084217C	</td><td>	665 81 45 37	</td><td>	8	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	ALICIA MOYA 	</td><td>	53583832L	</td><td>	652 06 97 74	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	ALVARO MARTINEZ FUENTES	</td><td>	52317534D	</td><td>	675 81 25 47	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	ANA MAURER	</td><td>	32072683B	</td><td>	637 09 10 97	</td><td>	3	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	ANDRE CHRISTIAN	</td><td>	NO TIENE	</td><td>	642 74 07 75	</td><td>	7	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	ANGEL MANUEL GONZALEZ	</td><td>	53582700Z 	</td><td>	672 64 75 69	</td><td>	1	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	CARMEN PEREZ SOTO	</td><td>	31675553E	</td><td>	678 67 96 53	</td><td>	7	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	CHAD JIMISON	</td><td>	Z2345464K	</td><td>	686 02 27 57	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	DAVID SANCHEZ	</td><td>	53580301F	</td><td>	617 76 54 08	</td><td>	4	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	ELISABETH CERVANTES	</td><td>	53584521H	</td><td>	697 71 17 45	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	FELIPE SINTH FLORIDO 	</td><td>	11165475X	</td><td>		</td><td>	1	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	GIOVANNA DIFRANCO	</td><td>	3190483	</td><td>		</td><td>	5	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	GUSTAVO SANCHEZ ABASCAL	</td><td>	27324444F	</td><td>	653 43 34 44	</td><td>	1	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	INMA PEÑA 	</td><td>	52314228S	</td><td>	672 50 92 41	</td><td>	1	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	ISMAEL MORALES	</td><td>	48878792C	</td><td>	619 43 60 13	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	JASON DOLLY	</td><td>	FA368834	</td><td>	658 88 51 31	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	JAVI RUIZ HENESTROSA	</td><td>	78608411T	</td><td>	625 04 26 09	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	JENI SANCHEZ	</td><td>	52317823E	</td><td>	653 27 29 62	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	JESUS CONSUEGRA	</td><td>	47337786Z	</td><td>	692 10 39 72	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	JESUS CORBETO	</td><td>	52315367G	</td><td>	606 58 21 09	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	JOSE LUIS MUÑOZ CRUZ	</td><td>	31724610C	</td><td>	667 48 32 21	</td><td>	3	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	KEVIN MEDINA ESQUIVEL	</td><td>	53582592K	</td><td>	353870529698	</td><td>	1	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	LAURA JASSO	</td><td>	Z0742525-K	</td><td>	687 04 45 41	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	LORENA MORENO RANGEL	</td><td>	53584636H	</td><td>	657 35 66 07	</td><td>	1	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	LUIS MIGUEL HERRERA CARMONA	</td><td>	28498335R	</td><td>	672 05 21 51	</td><td>	1	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	MARIA SANCHEZ FREIRE + SERGIO 	</td><td>	52563620h	</td><td>	636 20 22 60	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	MAURO MUÑOZ 	</td><td>	53581082Y	</td><td>	673 20 65 34	</td><td>	3	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	MIGUEL ANGEL ALBA SANCHEZ	</td><td>	74904202X	</td><td>	639 18 13 52	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	MIGUEL ANGEL URQUIZA + JOSE R 	</td><td>	X4904774R	</td><td>	600 88 64 60	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	NATALIA BRAVO	</td><td>	52317694P	</td><td>	613 37 96 29	</td><td>	15	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	NAZARET LOBATO RAMOS	</td><td>	53587477 F	</td><td>	625 25 29 19	</td><td>	1	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	NOELIA SALAS 	</td><td>	52318485V	</td><td>	647 88 82 63	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	PATRICIA MONTES HERRERA	</td><td>	523119979Q	</td><td>	657 90 84 31	</td><td>	1	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	PELAYO  LONDRES	</td><td>	94291214	</td><td>	623 41 57 33	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	PILAR NIÑO  	</td><td>	53582951N	</td><td>	637 42 94 83	</td><td>	6	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	SARA MATEO BARBA	</td><td>	53584273T	</td><td>	686 69 12 81	</td><td>	2	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	SERGIO RODRIGUEZ MUÑOZ 	</td><td>	45738244F	</td><td>	660 12 83 45	</td><td>	1	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+<tr><td>	VICTOR DEL VALLE	</td><td>	38561992P	</td><td>	661 71 33 67	</td><td>	1	</td><td><input type="text" maxlength="2" class="max2"></td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+
+        </tbody>
+      </table>
+      <div class="button-group">
+        <button type="submit" class="btn-save">Guardar Cambios</button>
+        <button type="button" id="exportBtn" class="btn-export">Exportar a Excel</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script>
+    document.getElementById('asistenciaForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const rows = Array.from(document.querySelectorAll('tbody tr'));
+      const data = rows.map(row => {
+        const cells = row.querySelectorAll('td');
+        return {
+          nombre: cells[0].innerText.trim(),
+          dni: cells[1].innerText.trim(),
+          movil: cells[2].innerText.trim(),
+          numero: cells[3].innerText.trim(),
+          pendientes: cells[4].querySelector('input').value.trim(),
+          entregada: cells[5].querySelector('input[type="checkbox"]').checked ? 'Sí' : 'No',
+          observaciones: cells[6].querySelector('input[type="text"]').value.trim()
+        };
+      });
+      fetch('https://script.google.com/macros/s/AKfycbxFOmWiGTQ9cxBXVDCw8Z5TjvxxeMVtVkLUne9IgWkq1QeRRJ0dHSUGKrl4MH6YNTkG/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      alert('Cambios enviados correctamente.');
+    });
+
+    document.getElementById('exportBtn').addEventListener('click', function () {
+      const rows = Array.from(document.querySelectorAll('tbody tr'));
+      const data = [
+        ['Nombre', 'DNI', 'Móvil', 'Nº', 'Pendientes', 'Entregada', 'Observaciones']
+      ];
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        data.push([
+          cells[0].innerText.trim(),
+          cells[1].innerText.trim(),
+          cells[2].innerText.trim(),
+          cells[3].innerText.trim(),
+          cells[4].querySelector('input').value.trim(),
+          cells[5].querySelector('input[type="checkbox"]').checked ? 'Sí' : 'No',
+          cells[6].querySelector('input[type="text"]').value.trim()
+        ]);
+      });
+      const ws = XLSX.utils.aoa_to_sheet(data);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Asistencia');
+      XLSX.writeFile(wb, 'RotaBeachPride2025_Asistencia.xlsx');
+    });
+  </script>
+</body>
+</html>
